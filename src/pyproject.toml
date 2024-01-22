@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "click-noexit"
+version = "0.1.0"
+description = "Suppresses the default behavior of Click commands to exit the process."
+authors = ["Adrian Macal <adma@amacal.pl>"]
+license = "MIT"
+readme = "../README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+click = "^8.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
