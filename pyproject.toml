@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Suppresses the default behavior of Click commands to exit the process."
 authors = ["Adrian Macal <adma@amacal.pl>"]
 license = "MIT"
-readme = "../README.md"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.8"
