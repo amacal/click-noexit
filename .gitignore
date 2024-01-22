@@ -1,3 +1,4 @@
+.vscode
 .mypy*
 .pytest*
 __pycache*
