@@ -1,4 +1,4 @@
-name: Python package
+name: Build
 
 on:
   push:
@@ -11,19 +11,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PYTHON_VERSION: '3.12'
+      POETRY_VERSION: '1.7.1'
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.12'
+        python-version: ${{ env.PYTHON_VERSION }}
+
     - name: Install dependencies
       run: |
-        pipx ensurepath && pipx install poetry==1.7.1
-        poetry install && poetry build
+        pipx ensurepath
+        pipx install poetry==${{ env.POETRY_VERSION }}
+        poetry install
+        poetry build
+
     - name: Lint with mypy
       run: |
         poetry run mypy .
+
     - name: Test with pytest
       run: |
         poetry run pytest

@@ -19,7 +19,7 @@ CommandFunction = Callable[..., CommandResult]
 def noexit(*args, **kwargs) -> Callable[[CommandFunction], CommandFunction]:
     """
     A decorator to wrap Click commands and prevent them from exiting the application directly.
-    
+
     Click commands, by default, exit the application after completion or when an error occurs.
     This decorator ensures that the command does not exit the application, but instead,
     returns the exit code. This is particularly useful when integrating Click commands into
@@ -49,13 +49,13 @@ def noexit(*args, **kwargs) -> Callable[[CommandFunction], CommandFunction]:
             :param kwargs: Keyword arguments to pass to the command.
             :return: The exit code of the command if an exit was requested, otherwise None.
             """
-            
+
             try:
-                # Execute the command with standalone_mode set to False. 
+                # Execute the command with standalone_mode set to False.
                 # This prevents Click from automatically handling exceptions and exiting the application.
                 return command(standalone_mode=False, *args, **kwargs)
             except click.exceptions.Exit as e:
-                # If the command requests an exit (like with ctx.exit()), 
+                # If the command requests an exit (like with ctx.exit()),
                 # catch it and return the exit code instead of exiting the program.
                 return e.exit_code
             except click.exceptions.ClickException as e:
